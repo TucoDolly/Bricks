@@ -10,10 +10,5 @@ public class PlayerView : MonoBehaviour
         _playerController = GetComponent<PlayerController>(); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        float h = Input.GetAxis("Horizontal");
-        _playerController.Move(h);
-    }
+    // A leitura de input e o movimento agora são feitos no PlayerController (Input System + Rigidbody2D).
 }

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine;
 using System.Collections;
@@ -10,13 +11,80 @@ public class BallController : MonoBehaviour
 
     private BallModel _ballModel;
     private Rigidbody2D _rigidBody2d;
+    private Transform _playerTransform;
+    private Vector2 _offsetFromPlayer;
+    private bool _launched;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Ângulo máximo de desvio da vertical no lançamento (graus)
+    [SerializeField] private float _launchAngleRange = 30f;
+
     void Start()
     {
         _ballModel   = GetComponent<BallModel>();
         _rigidBody2d = GetComponent<Rigidbody2D>();
 
+        PlayerController player = FindAnyObjectByType<PlayerController>();
+        if (player != null)
+        {
+            _playerTransform  = player.transform;
+            _offsetFromPlayer = transform.position - _playerTransform.position;
+        }
+        else
+        {
+            // Sem raquete na cena: lança imediatamente
+            Launch();
+            return;
+        }
+
+        _rigidBody2d.linearVelocity = Vector2.zero;
+    }
+
+    void Update()
+    {
+        if (_launched)
+        {
+            // Bola caiu abaixo da tela: volta para a raquete
+            Camera cam = Camera.main;
+            if (cam != null && _playerTransform != null &&
+                transform.position.y < cam.transform.position.y - cam.orthographicSize)
+            {
+                ResetBall();
+            }
+            return;
+        }
+
+        bool pressed = (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame) ||
+                       (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
+        if (pressed) Launch();
+    }
+
+    public void ResetBall()
+    {
+        _launched = false;
+        _rigidBody2d.linearVelocity = Vector2.zero;
+        _rigidBody2d.position = (Vector2)_playerTransform.position + _offsetFromPlayer;
+    }
+
+    void FixedUpdate()
+    {
+        // Antes do lançamento, a bola acompanha a raquete
+        if (!_launched && _playerTransform != null)
+        {
+            _rigidBody2d.position = (Vector2)_playerTransform.position + _offsetFromPlayer;
+            _rigidBody2d.linearVelocity = Vector2.zero;
+        }
+    }
+
+    public void Launch()
+    {
+        if (_launched) return;
+        _launched = true;
+
+        // A cena serializou speed = 0; usa um valor padrão para a bola poder se mover
+        if (_ballModel.speed <= 0f) _ballModel.speed = 8f;
+
+        float angle = UnityEngine.Random.Range(-_launchAngleRange, _launchAngleRange) * Mathf.Deg2Rad;
+        _ballModel.direction = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
         _rigidBody2d.linearVelocity = _ballModel.direction * _ballModel.speed;
     }
 
