@@ -191,13 +191,148 @@ public static class BricksSceneBuilder
                 brick.AddComponent<BoxCollider2D>();
                 brick.AddComponent<BrickModel>();
                 brick.AddComponent<BrickView>();
-                brick.AddComponent<BrickController>();
+                // Linha do topo: tijolos resistentes; demais: normais
+                if (row == 0) brick.AddComponent<StrongBrickController>();
+                else          brick.AddComponent<NormalBrickController>();
             }
         }
 
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         Selection.activeGameObject = container;
         Debug.Log($"[BricksSceneBuilder] {columns * rows} tijolos gerados.");
+    }
+
+    [MenuItem("Ferramentas/Gerar Tijolos (Fase 2)")]
+    public static void GenerateBricksPhase2()
+    {
+        BrickView templateView = Object.FindAnyObjectByType<BrickView>(FindObjectsInactive.Include);
+        if (templateView == null)
+        {
+            Debug.LogError("Nenhum tijolo encontrado para copiar a arte! Abra a Fase 1, duplique-a e **NÃO apague o BricksContainer** antes de rodar essa ferramenta.");
+            return;
+        }
+        GameObject template = templateView.gameObject;
+
+        GameObject container = GameObject.Find("BricksContainer") ?? new GameObject("BricksContainer");
+        Undo.RegisterCompleteObjectUndo(container, "Gerar Tijolos Fase 2");
+
+        // Deleta todos os filhos atuais, menos o template se ele estiver lá
+        for (int i = container.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = container.transform.GetChild(i).gameObject;
+            if (child != template) Object.DestroyImmediate(child);
+        }
+
+        const int rows = 4;
+        const float spacingX = 1f;
+        const float spacingY = 0.5f;
+        const float startY = 4f;
+        int[] activeColumns = { -1, 0, 1, 4, 5, 6 };
+
+        for (int row = 0; row < rows; row++)
+        {
+            foreach (int col in activeColumns)
+            {
+                Vector3 pos = new Vector3(-2.5f + col * spacingX, startY - row * spacingY, 0f);
+                CreateClonedBrick(template, container.transform, pos, row == 0);
+            }
+        }
+        Object.DestroyImmediate(template);
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        Debug.Log("[BricksSceneBuilder] Fase 2 gerada com sucesso mantendo os sprites originais!");
+    }
+
+    [MenuItem("Ferramentas/Gerar Tijolos (Fase 3)")]
+    public static void GenerateBricksPhase3()
+    {
+        BrickView templateView = Object.FindAnyObjectByType<BrickView>(FindObjectsInactive.Include);
+        if (templateView == null)
+        {
+            Debug.LogError("Nenhum tijolo encontrado para copiar a arte! Abra a Fase 1, duplique-a e **NÃO apague o BricksContainer** antes de rodar essa ferramenta.");
+            return;
+        }
+        GameObject template = templateView.gameObject;
+
+        GameObject container = GameObject.Find("BricksContainer") ?? new GameObject("BricksContainer");
+        Undo.RegisterCompleteObjectUndo(container, "Gerar Tijolos Fase 3");
+
+        for (int i = container.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = container.transform.GetChild(i).gameObject;
+            if (child != template) Object.DestroyImmediate(child);
+        }
+
+        const float spacingX = 1f;
+        const float spacingY = 0.5f;
+        const float topStartY = 4.5f;
+        const float bottomStartY = 1.0f; 
+
+        void CreateSquare(float startYPos)
+        {
+            for (int row = 0; row < 3; row++) 
+            {
+                for (int col = 0; col < 4; col++) 
+                {
+                    Vector3 pos = new Vector3(-1.5f + col * spacingX, startYPos - row * spacingY, 0f);
+                    bool isStrong = (row == 0 || row == 2 || col == 0 || col == 3);
+                    CreateClonedBrick(template, container.transform, pos, isStrong);
+                }
+            }
+        }
+
+        CreateSquare(topStartY);
+        CreateSquare(bottomStartY);
+
+        Object.DestroyImmediate(template);
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        Debug.Log("[BricksSceneBuilder] Fase 3 gerada com sucesso mantendo os sprites originais!");
+    }
+
+    private static void CreateClonedBrick(GameObject template, Transform parent, Vector3 position, bool isStrong)
+    {
+        GameObject brick = Object.Instantiate(template, position, Quaternion.identity, parent);
+        brick.name = "Brick";
+
+        // Ajustar scripts para ser Forte ou Normal dependendo da posição
+        if (isStrong && brick.GetComponent<StrongBrickController>() == null)
+        {
+            if (brick.GetComponent<NormalBrickController>() != null) Object.DestroyImmediate(brick.GetComponent<NormalBrickController>());
+            brick.AddComponent<StrongBrickController>();
+        }
+        else if (!isStrong && brick.GetComponent<NormalBrickController>() == null)
+        {
+            if (brick.GetComponent<StrongBrickController>() != null) Object.DestroyImmediate(brick.GetComponent<StrongBrickController>());
+            brick.AddComponent<NormalBrickController>();
+        }
+    }
+
+    [MenuItem("Ferramentas/Converter Tijolos Existentes")]
+    public static void ConvertExistingBricks()
+    {
+        BrickView[] views = Object.FindObjectsByType<BrickView>(FindObjectsInactive.Include);
+        if (views.Length == 0)
+        {
+            Debug.LogWarning("[BricksSceneBuilder] Nenhum tijolo encontrado na cena.");
+            return;
+        }
+
+        float topY = float.MinValue;
+        foreach (BrickView v in views) topY = Mathf.Max(topY, v.transform.position.y);
+
+        foreach (BrickView v in views)
+        {
+            GameObject go = v.gameObject;
+            GameObjectUtility.RemoveMonoBehavioursWithMissingScript(go);
+            if (go.GetComponent<BrickController>() != null) continue;
+
+            // Linha do topo: resistentes; demais: normais
+            bool isTopRow = v.transform.position.y >= topY - 0.01f;
+            if (isTopRow) Undo.AddComponent<StrongBrickController>(go);
+            else          Undo.AddComponent<NormalBrickController>(go);
+        }
+
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        Debug.Log($"[BricksSceneBuilder] {views.Length} tijolos convertidos.");
     }
 
     private static void FitCircleColliderToSprite(GameObject go)
@@ -247,5 +382,32 @@ public static class BricksSceneBuilder
         Undo.AddComponent<PlayerModel>(player);
         Undo.AddComponent<PlayerView>(player);
         Undo.AddComponent<PlayerController>(player);
+    }
+
+    [MenuItem("Ferramentas/Configurar Ordem das Fases (Automático)")]
+    public static void AutoConfigureBuildSettings()
+    {
+        var scenes = new System.Collections.Generic.List<EditorBuildSettingsScene>();
+
+        // Busca o caminho de cada fase (ajuste os nomes se estiverem diferentes)
+        string menuPath = "Assets/Scenes/MainMenu.unity";
+        string fase1Path = "Assets/Scenes/SampleScene.unity"; // Nome padrão da fase 1
+        string fase2Path = "Assets/Scenes/Fase2.unity";
+        string fase3Path = "Assets/Scenes/Fase3.unity";
+
+        // Verifica o que já existe
+        if (System.IO.File.Exists(menuPath)) scenes.Add(new EditorBuildSettingsScene(menuPath, true));
+        if (System.IO.File.Exists(fase1Path)) scenes.Add(new EditorBuildSettingsScene(fase1Path, true));
+        
+        // Se a pessoa renomeou a SampleScene para Fase1, tentamos esse nome também
+        string fase1Alt = "Assets/Scenes/Fase1.unity";
+        if (System.IO.File.Exists(fase1Alt) && !System.IO.File.Exists(fase1Path)) 
+            scenes.Add(new EditorBuildSettingsScene(fase1Alt, true));
+
+        if (System.IO.File.Exists(fase2Path)) scenes.Add(new EditorBuildSettingsScene(fase2Path, true));
+        if (System.IO.File.Exists(fase3Path)) scenes.Add(new EditorBuildSettingsScene(fase3Path, true));
+
+        EditorBuildSettings.scenes = scenes.ToArray();
+        Debug.Log("[BricksSceneBuilder] Fases ordenadas com sucesso para o botão Continuar funcionar!");
     }
 }

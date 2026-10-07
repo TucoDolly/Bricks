@@ -7,39 +7,41 @@ public class BallView : MonoBehaviour
     private BallController _ballController;
     private BallModel _ballModel;
 
-    public TextMeshProUGUI TextoUIPontos;//2º
 
     void Start()
     {
         _ballController =  GetComponent<BallController>();
         _ballModel      =  GetComponent<BallModel>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
-    
+    private float _lastHitFixedTime = -1f;
+
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        // Evita quebrar 2 tijolos de uma vez
+        if (Mathf.Approximately(_lastHitFixedTime, Time.fixedTime)) return;
+        _lastHitFixedTime = Time.fixedTime;
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.TryGetComponent(out BrickView _brickView))
         {
-            BrickView _brickView = collision.gameObject.GetComponent<BrickView>(); 
+            AudioController.Instance.PlayBrickHit();
+            // A pontuação agora é gerenciada dentro do BrickController para não dar conflito no Restart
             _brickView.PerformTakeDamage(1f);
-            //Startar contador de pontuação
-            _ballModel.pontuacao = _ballModel.pontuacao + 10;//3º
-            //Atualizar em Tela
-            TextoUIPontos.text = "Pontuação: " + _ballModel.pontuacao;//4º
         }
 
-        if (collision.gameObject.tag != "Player")
+        if (!collision.gameObject.TryGetComponent<PlayerController>(out _))
         {
+            if (_brickView == null) AudioController.Instance.PlayBallHit();
             _ballController.PerfectAngleReflect(collision);
         }
         else
         {
+            AudioController.Instance.PlayPlayerHit();
             _ballController.CalcBallAngleReflect(collision);
-            //Startar contador de pontuação
-            _ballModel.pontuacao = _ballModel.pontuacao - 2;//5º
-            //Atualizar em Tela
-            TextoUIPontos.text = "Pontuação: " + _ballModel.pontuacao;//6º
+            if (GameManager.Instance != null) GameManager.Instance.AddScore(-2);
         }
     }
 }

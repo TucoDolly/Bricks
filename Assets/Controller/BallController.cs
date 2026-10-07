@@ -48,6 +48,7 @@ public class BallController : MonoBehaviour
             if (cam != null && _playerTransform != null &&
                 transform.position.y < cam.transform.position.y - cam.orthographicSize)
             {
+                if (GameManager.Instance != null) GameManager.Instance.LoseLife();
                 ResetBall();
             }
             return;
@@ -92,9 +93,19 @@ public class BallController : MonoBehaviour
 
     public void PerfectAngleReflect(Collision2D collision)
     {
-        _ballModel.direction = Vector2.Reflect(_ballModel.direction, collision.contacts[0].normal);
-        AngleChange(_ballModel.direction);
+        _ballModel.direction = Vector2.Reflect(_ballModel.direction, collision.contacts[0].normal).normalized;
+        
+        // Evitar que a bola fique pingando apenas na horizontal infinitamente
+        if (Mathf.Abs(_ballModel.direction.y) < 0.2f)
+        {
+            // Cópia local para alterar o struct
+            Vector2 newDir = _ballModel.direction;
+            float sign = newDir.y >= 0f ? 1f : -1f;
+            newDir.y = 0.2f * sign;
+            _ballModel.direction = newDir.normalized;
+        }
 
+        AngleChange(_ballModel.direction);
     }
 
     public void AngleChange(Vector2 dir)
@@ -104,30 +115,18 @@ public class BallController : MonoBehaviour
     }
 
 
+    // Ângulo mínimo em relação à horizontal (evita bola quase paralela à raquete)
+    [SerializeField] private float _minPaddleAngle = 25f;
+
     public void CalcBallAngleReflect(Collision2D playerCol)
     {
-        // Quantidade de pixels do player
-        float playerPixels = 120f;
-        //Nº de pixels do player, divido por dois, dividido por 100 para enquadrar na escal da Unity
-        float unityScaledHalfPlayerPixels = playerPixels / 2f / 100f;
-        //Fator de conversão de 180 graus para 120 pixels
-        float scaleFactorToPutIn1dot8Range = 1.5f;
-        //Angulo calculado em Degree, na escla da unit, e transformado
-        //para a escala de 0 a 180
-        float angleDegUnityScale = (playerCol.transform.position.x - transform.position.x 
-                                  + unityScaledHalfPlayerPixels) * scaleFactorToPutIn1dot8Range;
-        //Transformei o valor da escala da unit(Que era dividido por 100), para angulo em Deg convencional
-        float angleDeg = angleDegUnityScale * 100f;
-        if (angleDeg < 25f)
-        {
-            angleDeg = 25f;
-        }else if (angleDeg >155f)
-        {
-            angleDeg = 155f;
-        }
-        //Conversão matemática do angulo em Degree para Radian
-        float angleRad = angleDeg * Mathf.PI / 180f;
-        _ballModel.direction = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+        Bounds b = playerCol.collider.bounds;
+        // -1 = ponta esquerda, 0 = centro, 1 = ponta direita
+        float hit = Mathf.Clamp((transform.position.x - b.center.x) / b.extents.x, -1f, 1f);
+        // Ângulo medido a partir da vertical: centro = reto, pontas = inclinado
+        float maxFromVertical = 90f - _minPaddleAngle;
+        float angleRad = hit * maxFromVertical * Mathf.Deg2Rad;
+        _ballModel.direction = new Vector2(Mathf.Sin(angleRad), Mathf.Cos(angleRad));
         AngleChange(_ballModel.direction);
     }
 
