@@ -293,16 +293,34 @@ public static class BricksSceneBuilder
         GameObject brick = Object.Instantiate(template, position, Quaternion.identity, parent);
         brick.name = "Brick";
 
-        // Ajustar scripts para ser Forte ou Normal dependendo da posição
-        if (isStrong && brick.GetComponent<StrongBrickController>() == null)
+        if (PrefabUtility.IsPartOfPrefabInstance(brick))
         {
-            if (brick.GetComponent<NormalBrickController>() != null) Object.DestroyImmediate(brick.GetComponent<NormalBrickController>());
-            brick.AddComponent<StrongBrickController>();
+            PrefabUtility.UnpackPrefabInstance(brick, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
         }
-        else if (!isStrong && brick.GetComponent<NormalBrickController>() == null)
+
+        Undo.RegisterCreatedObjectUndo(brick, "Create Cloned Brick");
+
+        // Limpa scripts fantasmas/corrompidos que causam erro no GetComponent
+        GameObjectUtility.RemoveMonoBehavioursWithMissingScript(brick);
+
+        // Removemos qualquer controller antigo que veio clonado
+        var oldControllers = brick.GetComponents<BrickController>();
+        foreach (var c in oldControllers)
         {
-            if (brick.GetComponent<StrongBrickController>() != null) Object.DestroyImmediate(brick.GetComponent<StrongBrickController>());
-            brick.AddComponent<NormalBrickController>();
+            if (c != null)
+            {
+                Object.DestroyImmediate(c, true);
+            }
+        }
+
+        // Adicionamos o controller correto
+        if (isStrong)
+        {
+            Undo.AddComponent<StrongBrickController>(brick);
+        }
+        else
+        {
+            Undo.AddComponent<NormalBrickController>(brick);
         }
     }
 

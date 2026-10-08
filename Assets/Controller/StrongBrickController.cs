@@ -14,7 +14,7 @@ public class StrongBrickController : BrickController
     protected override void Awake()
     {
         base.Awake();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (_spriteRenderer != null) _spriteRenderer.color = FullHealthColor;
     }
 

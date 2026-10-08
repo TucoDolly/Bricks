@@ -6,19 +6,14 @@ public class BrickView : MonoBehaviour
 
     void Awake()
     {
-        _brickController = GetComponent<BrickController>();
+        _brickController = GetComponent<StrongBrickController>();
+        if (_brickController == null) _brickController = GetComponent<NormalBrickController>();
+        if (_brickController == null) _brickController = GetComponent<BrickController>();
 
-        // Fallback: tijolos antigos sem controller recebem um automaticamente.
+        // Fallback absoluto caso o gerador falhe ou um tijolo seja arrastado manualmente sem controller
         if (_brickController == null)
         {
-            float topY = float.MinValue;
-            foreach (BrickView v in FindObjectsByType<BrickView>(FindObjectsInactive.Include))
-                topY = Mathf.Max(topY, v.transform.position.y);
-
-            bool isTopRow = transform.position.y >= topY - 0.01f;
-            _brickController = isTopRow
-                ? (BrickController)gameObject.AddComponent<StrongBrickController>()
-                : gameObject.AddComponent<NormalBrickController>();
+            _brickController = gameObject.AddComponent<NormalBrickController>();
         }
     }
 

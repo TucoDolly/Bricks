@@ -105,6 +105,16 @@ public class BallController : MonoBehaviour
             _ballModel.direction = newDir.normalized;
         }
 
+        // Evitar que a bola fique pingando apenas na vertical infinitamente (grudada na parede)
+        if (Mathf.Abs(_ballModel.direction.x) < 0.2f)
+        {
+            Vector2 newDir = _ballModel.direction;
+            float sign = newDir.x >= 0f ? 1f : -1f;
+            if (sign == 0f) sign = 1f;
+            newDir.x = 0.2f * sign;
+            _ballModel.direction = newDir.normalized;
+        }
+
         AngleChange(_ballModel.direction);
     }
 

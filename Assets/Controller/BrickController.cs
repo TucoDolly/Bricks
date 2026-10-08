@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 /// reiniciar a fase ao quebrar o último) e deixa para as subclasses o que varia:
 /// vida inicial, pontuação e reação ao dano.
 /// </summary>
-public abstract class BrickController : MonoBehaviour
+public class BrickController : MonoBehaviour
 {
     protected BrickModel _brickModel;
 
     /// <summary>Vida inicial do tijolo.</summary>
-    public abstract float InitialHealth { get; }
+    public virtual float InitialHealth => 1f;
 
     /// <summary>Pontos concedidos ao destruir o tijolo.</summary>
-    public abstract int Points { get; }
+    public virtual int Points => 10;
 
     /// <summary>Chamado quando o tijolo sofre dano e continua vivo.</summary>
     protected virtual void OnDamaged() { }

@@ -16,17 +16,18 @@ public class BallView : MonoBehaviour
         if (rb != null) rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
-    private float _lastHitFixedTime = -1f;
-
+    private float _lastBrickHitTime = -1f;
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        // Evita quebrar 2 tijolos de uma vez
-        if (Mathf.Approximately(_lastHitFixedTime, Time.fixedTime)) return;
-        _lastHitFixedTime = Time.fixedTime;
+        bool isBrick = collision.gameObject.TryGetComponent(out BrickView _brickView);
 
-        if (collision.gameObject.TryGetComponent(out BrickView _brickView))
+        if (isBrick)
         {
+            // Evita quebrar 2 tijolos quase ao mesmo tempo (ex: quiques duplos em cantos)
+            if (Time.fixedTime - _lastBrickHitTime < 0.05f) return;
+            _lastBrickHitTime = Time.fixedTime;
+            
             AudioController.Instance.PlayBrickHit();
             // A pontuação agora é gerenciada dentro do BrickController para não dar conflito no Restart
             _brickView.PerformTakeDamage(1f);
@@ -34,7 +35,7 @@ public class BallView : MonoBehaviour
 
         if (!collision.gameObject.TryGetComponent<PlayerController>(out _))
         {
-            if (_brickView == null) AudioController.Instance.PlayBallHit();
+            if (!isBrick) AudioController.Instance.PlayBallHit();
             _ballController.PerfectAngleReflect(collision);
         }
         else
