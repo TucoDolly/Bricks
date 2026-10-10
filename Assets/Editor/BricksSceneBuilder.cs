@@ -95,7 +95,8 @@ public static class BricksSceneBuilder
         float fullWidth = halfW * 2f + thickness * 2f;
         float fullHeight = halfH * 2f;
 
-        CreateWall(borders, "TopWall", new Vector2(0f, halfH + thickness * 0.5f), new Vector2(fullWidth, thickness), false);
+        const float topBarWorldHeight = 0.833f;
+        CreateWall(borders, "TopWall", new Vector2(0f, halfH - topBarWorldHeight + thickness * 0.5f), new Vector2(fullWidth, thickness), false);
         CreateWall(borders, "BottomWall", new Vector2(0f, -halfH - thickness * 0.5f), new Vector2(fullWidth, thickness), true);
         CreateWall(borders, "LeftWall", new Vector2(-halfW - thickness * 0.5f, 0f), new Vector2(thickness, fullHeight), false);
         CreateWall(borders, "RightWall", new Vector2(halfW + thickness * 0.5f, 0f), new Vector2(thickness, fullHeight), false);

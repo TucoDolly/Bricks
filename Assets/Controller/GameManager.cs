@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public event Action<int> OnScoreChanged;
     public event Action<int> OnLifeChanged;
+    public event Action<string> OnPlayerNameChanged;
     public event Action OnGameOver;
     public event Action OnVictory;
 
@@ -56,9 +57,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adiciona vidas ao jogador até o limite máximo de 3 vidas.
+    /// Chamado ao avançar de fase ("cada avanço de fase deve ganhar uma vida, a não ser que já tenha 3").
+    /// </summary>
+    public void AddLife(int amount = 1)
+    {
+        if (Lives >= InitialLives) return;
+        Lives = Mathf.Min(Lives + amount, InitialLives);
+        OnLifeChanged?.Invoke(Lives);
+    }
+
     public void SetPlayerName(string playerName)
     {
-        PlayerName = string.IsNullOrWhiteSpace(playerName) ? "Jogador" : playerName;
+        PlayerName = string.IsNullOrWhiteSpace(playerName) ? "Jogador" : playerName.Trim();
+        OnPlayerNameChanged?.Invoke(PlayerName);
     }
 
     public void WinMatch()
@@ -73,6 +86,7 @@ public class GameManager : MonoBehaviour
         Lives = InitialLives;
         OnScoreChanged?.Invoke(Score);
         OnLifeChanged?.Invoke(Lives);
+        OnPlayerNameChanged?.Invoke(PlayerName);
     }
 
     /// <summary>Reseta a pontuação e vidas, e recarrega a cena atual.</summary>

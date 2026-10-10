@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         _inputX = 0f;
         if (Keyboard.current == null) return;
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (Time.timeScale == 0f) return;
         Camera cam = Camera.main;
         if (cam == null) return;
 

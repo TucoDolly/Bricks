@@ -41,6 +41,8 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         if (_launched)
         {
             // Bola caiu abaixo da tela: volta para a raquete
