@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// Automatiza a montagem da cena do jogo Bricks pelo menu "Ferramentas".
@@ -235,12 +237,71 @@ public static class BricksSceneBuilder
             foreach (int col in activeColumns)
             {
                 Vector3 pos = new Vector3(-2.5f + col * spacingX, startY - row * spacingY, 0f);
-                CreateClonedBrick(template, container.transform, pos, row == 0);
+                // As 2 fileiras verticais mais centralizadas do meio: col == 1 (X = -1.5) e col == 4 (X = 1.5)
+                bool isStrong = (col == 1 || col == 4);
+                CreateClonedBrick(template, container.transform, pos, isStrong);
             }
         }
         Object.DestroyImmediate(template);
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         Debug.Log("[BricksSceneBuilder] Fase 2 gerada com sucesso mantendo os sprites originais!");
+    }
+
+    [MenuItem("Ferramentas/Atualizar Blocos da Fase 2")]
+    public static void UpdateFase2Bricks()
+    {
+        string scenePath = "Assets/Scenes/Fase2.unity";
+        var scene = EditorSceneManager.OpenScene(scenePath);
+
+        GameObject container = GameObject.Find("BricksContainer");
+        BrickView[] views = container != null 
+            ? container.GetComponentsInChildren<BrickView>(true) 
+            : Object.FindObjectsByType<BrickView>(FindObjectsInactive.Include);
+
+        Color strongColor = new Color(0.85f, 0.25f, 0.25f);
+
+        int strongCount = 0;
+        int normalCount = 0;
+
+        foreach (var view in views)
+        {
+            GameObject brick = view.gameObject;
+            GameObjectUtility.RemoveMonoBehavioursWithMissingScript(brick);
+
+            var oldControllers = brick.GetComponents<BrickController>();
+            foreach (var c in oldControllers)
+            {
+                if (c != null) Object.DestroyImmediate(c, true);
+            }
+
+            float posX = brick.transform.position.x;
+            // As 2 fileiras verticais de cima para baixo mais centralizadas do meio (X = -1.5 e X = 1.5)
+            bool isStrong = Mathf.Abs(posX - (-1.5f)) < 0.25f || Mathf.Abs(posX - 1.5f) < 0.25f;
+
+            SpriteRenderer sr = brick.GetComponent<SpriteRenderer>();
+
+            if (isStrong)
+            {
+                brick.AddComponent<StrongBrickController>();
+                if (sr != null) sr.color = strongColor;
+                strongCount++;
+            }
+            else
+            {
+                brick.AddComponent<NormalBrickController>();
+                if (sr != null) sr.color = Color.white;
+                normalCount++;
+            }
+
+            if (brick.GetComponent<BrickModel>() == null)
+            {
+                brick.AddComponent<BrickModel>();
+            }
+        }
+
+        EditorSceneManager.MarkSceneDirty(scene);
+        EditorSceneManager.SaveScene(scene);
+        Debug.Log($"[BricksSceneBuilder] Fase 2 atualizada: {strongCount} resistentes (centralizados) e {normalCount} normais.");
     }
 
     [MenuItem("Ferramentas/Gerar Tijolos (Fase 3)")]
@@ -315,13 +376,16 @@ public static class BricksSceneBuilder
         }
 
         // Adicionamos o controller correto
+        SpriteRenderer sr = brick.GetComponent<SpriteRenderer>();
         if (isStrong)
         {
             Undo.AddComponent<StrongBrickController>(brick);
+            if (sr != null) sr.color = new Color(0.85f, 0.25f, 0.25f);
         }
         else
         {
             Undo.AddComponent<NormalBrickController>(brick);
+            if (sr != null) sr.color = Color.white;
         }
     }
 
@@ -428,5 +492,125 @@ public static class BricksSceneBuilder
 
         EditorBuildSettings.scenes = scenes.ToArray();
         Debug.Log("[BricksSceneBuilder] Fases ordenadas com sucesso para o botão Continuar funcionar!");
+    }
+
+    [MenuItem("Ferramentas/Aplicar Visual Neon Arcade 80s")]
+    public static void ApplyNeonVisualTheme()
+    {
+        VolumeProfile profile = AssetDatabase.LoadAssetAtPath<VolumeProfile>("Assets/Settings/SampleSceneProfile.asset");
+        Color deepSpaceColor = new Color(0.043f, 0.035f, 0.11f, 1f); // #0B091C Fundo Roxo/Azul Marinho Cósmico
+        Color playerNeonColor = new Color(0.1f, 1f, 0.5f, 1f);        // #1AFF80 Verde Limão Neon
+        Color strongColor = StrongBrickController.FullHealthColor;    // Roxo/Magenta Neon
+        Color cyanColor = new Color(0f, 0.9f, 1f);                    // #00E5FF Azul Ciano Neon
+        Color orangeColor = new Color(1f, 0.45f, 0f);                 // #FF7300 Laranja Neon
+        Color yellowColor = new Color(1f, 0.92f, 0.1f);               // #FFEB1A Amarelo Neon
+
+        string[] gameplayScenes = { "Assets/Scenes/SampleScene.unity", "Assets/Scenes/Fase2.unity", "Assets/Scenes/Fase3.unity" };
+
+        foreach (string scenePath in gameplayScenes)
+        {
+            if (!System.IO.File.Exists(scenePath)) continue;
+            var scene = EditorSceneManager.OpenScene(scenePath);
+
+            // 1. Câmera: Fundo espacial escuro e post-processing ativo
+            Camera cam = Camera.main;
+            if (cam != null)
+            {
+                cam.clearFlags = CameraClearFlags.SolidColor;
+                cam.backgroundColor = deepSpaceColor;
+
+                var camData = cam.GetComponent<UniversalAdditionalCameraData>();
+                if (camData != null)
+                {
+                    camData.renderPostProcessing = true;
+                }
+            }
+
+            // 2. Volume Global com Bloom
+            Volume vol = Object.FindAnyObjectByType<Volume>();
+            if (vol == null)
+            {
+                GameObject volObj = new GameObject("Global Volume");
+                vol = volObj.AddComponent<Volume>();
+                vol.isGlobal = true;
+            }
+            if (profile != null)
+            {
+                vol.sharedProfile = profile;
+            }
+
+            // 3. Player
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.color = playerNeonColor;
+            }
+
+            // 4. Ball
+            GameObject ball = GameObject.Find("Ball");
+            if (ball != null)
+            {
+                SpriteRenderer sr = ball.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.color = Color.white;
+            }
+
+            // 5. Blocos com paleta neon por fase
+            BrickView[] bricks = Object.FindObjectsByType<BrickView>(FindObjectsInactive.Include);
+            bool isFase2 = scenePath.Contains("Fase2");
+
+            foreach (var b in bricks)
+            {
+                GameObject go = b.gameObject;
+                SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+                if (sr == null) continue;
+
+                var strongCtrl = go.GetComponent<StrongBrickController>();
+                if (strongCtrl != null)
+                {
+                    sr.color = strongColor;
+                }
+                else
+                {
+                    float y = go.transform.position.y;
+                    if (isFase2)
+                    {
+                        if (y >= 3.8f) sr.color = strongColor;
+                        else if (y >= 3.3f) sr.color = cyanColor;
+                        else if (y >= 2.8f) sr.color = orangeColor;
+                        else sr.color = yellowColor;
+                    }
+                    else
+                    {
+                        sr.color = NormalBrickController.GetNeonColorForRow(y);
+                    }
+                }
+            }
+
+            EditorSceneManager.MarkSceneDirty(scene);
+            EditorSceneManager.SaveScene(scene);
+        }
+
+        // Main Menu Câmera
+        string menuPath = "Assets/Scenes/MainMenu.unity";
+        if (System.IO.File.Exists(menuPath))
+        {
+            var menuScene = EditorSceneManager.OpenScene(menuPath);
+            Camera mCam = Camera.main;
+            if (mCam != null)
+            {
+                mCam.clearFlags = CameraClearFlags.SolidColor;
+                mCam.backgroundColor = deepSpaceColor;
+                var camData = mCam.GetComponent<UniversalAdditionalCameraData>();
+                if (camData != null) camData.renderPostProcessing = true;
+            }
+            EditorSceneManager.MarkSceneDirty(menuScene);
+            EditorSceneManager.SaveScene(menuScene);
+        }
+
+        // Atualiza a UI estilizada em todas as cenas
+        SetupAllScenes.UpdateAllScenes();
+
+        Debug.Log("[BricksSceneBuilder] Visual Neon Arcade 80s aplicado com sucesso em todas as cenas!");
     }
 }

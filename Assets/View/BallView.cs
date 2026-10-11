@@ -42,7 +42,7 @@ public class BallView : MonoBehaviour
         {
             AudioController.Instance.PlayPlayerHit();
             _ballController.CalcBallAngleReflect(collision);
-            if (GameManager.Instance != null) GameManager.Instance.AddScore(-2);
+            if (GameManager.Instance != null) GameManager.Instance.AddScore(-5);
         }
     }
 }

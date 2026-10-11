@@ -212,10 +212,7 @@ GameObject:
   - component: {fileID: 142897496}
   - component: {fileID: 142897495}
   - component: {fileID: 142897494}
-  - component: {fileID: 142897493}
-  - component: {fileID: 142897492}
-  - component: {fileID: 142897491}
-  - component: {fileID: 142897490}
+  - component: {fileID: 142897498}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -238,54 +235,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &142897490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142897488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &142897491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142897488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &142897492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142897488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &142897493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142897488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &142897494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +357,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -418,6 +367,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &142897498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142897488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &162164426
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +564,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2311659948842064771, guid: d51d859704e3b6b49ba55ac510f92865, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1, g: 1, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -918,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1165,8 +1126,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294963712
+  m_fontColor: {r: 0, g: 0.95, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1249,10 +1210,7 @@ GameObject:
   - component: {fileID: 293651377}
   - component: {fileID: 293651376}
   - component: {fileID: 293651375}
-  - component: {fileID: 293651374}
-  - component: {fileID: 293651373}
-  - component: {fileID: 293651372}
-  - component: {fileID: 293651371}
+  - component: {fileID: 293651379}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -1275,54 +1233,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &293651371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293651369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
---- !u!114 &293651372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293651369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &293651373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293651369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &293651374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293651369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &293651375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,7 +1355,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1455,6 +1365,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &293651379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293651369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,8 +1413,8 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.043, g: 0.035, b: 0.11, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1701,7 +1623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1739,10 +1661,7 @@ GameObject:
   - component: {fileID: 358144054}
   - component: {fileID: 358144053}
   - component: {fileID: 358144052}
-  - component: {fileID: 358144051}
-  - component: {fileID: 358144050}
-  - component: {fileID: 358144049}
-  - component: {fileID: 358144048}
+  - component: {fileID: 358144056}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -1765,54 +1684,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &358144048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358144046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &358144049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358144046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &358144050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358144046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &358144051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358144046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &358144052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,7 +1806,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1945,6 +1816,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &358144056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358144046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &368617790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +1937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5803922, g: 0, b: 0.8274511, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2092,10 +1975,7 @@ GameObject:
   - component: {fileID: 379970200}
   - component: {fileID: 379970199}
   - component: {fileID: 379970198}
-  - component: {fileID: 379970197}
-  - component: {fileID: 379970196}
-  - component: {fileID: 379970195}
-  - component: {fileID: 379970194}
+  - component: {fileID: 379970202}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -2118,54 +1998,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &379970194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379970192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &379970195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379970192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &379970196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379970192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &379970197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379970192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &379970198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,7 +2120,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2298,6 +2130,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &379970202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379970192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2928,7 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3598,8 +3442,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4278232575
+  m_fontColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3778,7 +3622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4124,8 +3968,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286591999
+  m_fontColor: {r: 1, g: 0.2, b: 0.5, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4227,10 +4071,7 @@ GameObject:
   - component: {fileID: 953191934}
   - component: {fileID: 953191933}
   - component: {fileID: 953191932}
-  - component: {fileID: 953191931}
-  - component: {fileID: 953191930}
-  - component: {fileID: 953191929}
-  - component: {fileID: 953191928}
+  - component: {fileID: 953191936}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -4253,54 +4094,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &953191928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953191926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &953191929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953191926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &953191930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953191926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &953191931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953191926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &953191932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4423,7 +4216,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4433,6 +4226,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &953191936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953191926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &997494812
 GameObject:
   m_ObjectHideFlags: 0
@@ -4446,10 +4251,7 @@ GameObject:
   - component: {fileID: 997494820}
   - component: {fileID: 997494819}
   - component: {fileID: 997494818}
-  - component: {fileID: 997494817}
-  - component: {fileID: 997494816}
-  - component: {fileID: 997494815}
-  - component: {fileID: 997494814}
+  - component: {fileID: 997494822}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -4472,54 +4274,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &997494814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997494812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &997494815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997494812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &997494816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997494812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &997494817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997494812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &997494818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4642,7 +4396,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4652,6 +4406,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &997494822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997494812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &1081056377
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,10 +4431,7 @@ GameObject:
   - component: {fileID: 1081056385}
   - component: {fileID: 1081056384}
   - component: {fileID: 1081056383}
-  - component: {fileID: 1081056382}
-  - component: {fileID: 1081056381}
-  - component: {fileID: 1081056380}
-  - component: {fileID: 1081056379}
+  - component: {fileID: 1081056387}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -4691,54 +4454,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1081056379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081056377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1081056380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081056377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1081056381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081056377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1081056382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081056377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1081056383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4861,7 +4576,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4871,6 +4586,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1081056387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081056377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &1102588243
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,10 +4646,7 @@ GameObject:
   - component: {fileID: 1204886784}
   - component: {fileID: 1204886783}
   - component: {fileID: 1204886782}
-  - component: {fileID: 1204886781}
-  - component: {fileID: 1204886780}
-  - component: {fileID: 1204886779}
-  - component: {fileID: 1204886778}
+  - component: {fileID: 1204886786}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -4945,54 +4669,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1204886778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204886776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
---- !u!114 &1204886779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204886776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1204886780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204886776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1204886781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204886776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1204886782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5115,7 +4791,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5125,6 +4801,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1204886786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204886776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1212583615
 GameObject:
   m_ObjectHideFlags: 0
@@ -5371,7 +5059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.8078432, b: 0.8196079, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5453,10 +5141,7 @@ GameObject:
   - component: {fileID: 1305116354}
   - component: {fileID: 1305116353}
   - component: {fileID: 1305116352}
-  - component: {fileID: 1305116351}
-  - component: {fileID: 1305116350}
-  - component: {fileID: 1305116349}
-  - component: {fileID: 1305116348}
+  - component: {fileID: 1305116356}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -5479,54 +5164,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1305116348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305116346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1305116349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305116346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1305116350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305116346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1305116351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305116346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1305116352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5649,7 +5286,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5659,6 +5296,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1305116356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305116346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &1369201663
 GameObject:
   m_ObjectHideFlags: 0
@@ -5672,10 +5321,7 @@ GameObject:
   - component: {fileID: 1369201671}
   - component: {fileID: 1369201670}
   - component: {fileID: 1369201669}
-  - component: {fileID: 1369201668}
-  - component: {fileID: 1369201667}
-  - component: {fileID: 1369201666}
-  - component: {fileID: 1369201665}
+  - component: {fileID: 1369201673}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -5698,54 +5344,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1369201665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369201663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1369201666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369201663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1369201667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369201663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1369201668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369201663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1369201669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5868,7 +5466,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.45, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5878,6 +5476,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1369201673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369201663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1392180842
 GameObject:
   m_ObjectHideFlags: 0
@@ -5891,10 +5501,7 @@ GameObject:
   - component: {fileID: 1392180850}
   - component: {fileID: 1392180849}
   - component: {fileID: 1392180848}
-  - component: {fileID: 1392180847}
-  - component: {fileID: 1392180846}
-  - component: {fileID: 1392180845}
-  - component: {fileID: 1392180844}
+  - component: {fileID: 1392180852}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -5917,54 +5524,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1392180844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392180842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
---- !u!114 &1392180845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392180842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1392180846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392180842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1392180847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392180842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1392180848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6087,7 +5646,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6097,6 +5656,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1392180852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392180842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1412465570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,10 +5818,7 @@ GameObject:
   - component: {fileID: 1431204902}
   - component: {fileID: 1431204901}
   - component: {fileID: 1431204900}
-  - component: {fileID: 1431204899}
-  - component: {fileID: 1431204898}
-  - component: {fileID: 1431204897}
-  - component: {fileID: 1431204896}
+  - component: {fileID: 1431204904}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -6273,54 +5841,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1431204896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431204894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1431204897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431204894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1431204898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431204894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1431204899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431204894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1431204900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6443,7 +5963,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6453,6 +5973,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1431204904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431204894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1442654574
 GameObject:
   m_ObjectHideFlags: 0
@@ -6466,10 +5998,7 @@ GameObject:
   - component: {fileID: 1442654582}
   - component: {fileID: 1442654581}
   - component: {fileID: 1442654580}
-  - component: {fileID: 1442654579}
-  - component: {fileID: 1442654578}
-  - component: {fileID: 1442654577}
-  - component: {fileID: 1442654576}
+  - component: {fileID: 1442654584}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -6492,54 +6021,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1442654576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442654574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1442654577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442654574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1442654578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442654574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1442654579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442654574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1442654580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6662,7 +6143,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.45, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6672,6 +6153,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1442654584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442654574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1458237622
 GameObject:
   m_ObjectHideFlags: 0
@@ -6737,10 +6230,7 @@ GameObject:
   - component: {fileID: 1522880380}
   - component: {fileID: 1522880379}
   - component: {fileID: 1522880378}
-  - component: {fileID: 1522880377}
-  - component: {fileID: 1522880376}
-  - component: {fileID: 1522880375}
-  - component: {fileID: 1522880374}
+  - component: {fileID: 1522880382}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -6763,54 +6253,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1522880374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522880372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1522880375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522880372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1522880376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522880372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1522880377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522880372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1522880378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6933,7 +6375,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6943,6 +6385,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1522880382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522880372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1531681551
 GameObject:
   m_ObjectHideFlags: 0
@@ -7053,8 +6507,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4294901811
+  m_fontColor: {r: 0.20064294, g: 0, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7271,10 +6725,7 @@ GameObject:
   - component: {fileID: 1617678407}
   - component: {fileID: 1617678406}
   - component: {fileID: 1617678405}
-  - component: {fileID: 1617678404}
-  - component: {fileID: 1617678403}
-  - component: {fileID: 1617678402}
-  - component: {fileID: 1617678401}
+  - component: {fileID: 1617678409}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -7297,54 +6748,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1617678401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617678399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1617678402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617678399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1617678403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617678399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1617678404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617678399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1617678405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7467,7 +6870,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7477,6 +6880,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1617678409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617678399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1640930827
 GameObject:
   m_ObjectHideFlags: 0
@@ -7490,10 +6905,7 @@ GameObject:
   - component: {fileID: 1640930835}
   - component: {fileID: 1640930834}
   - component: {fileID: 1640930833}
-  - component: {fileID: 1640930832}
-  - component: {fileID: 1640930831}
-  - component: {fileID: 1640930830}
-  - component: {fileID: 1640930829}
+  - component: {fileID: 1640930837}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -7516,54 +6928,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1640930829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640930827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
---- !u!114 &1640930830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640930827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1640930831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640930827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1640930832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640930827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1640930833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7686,7 +7050,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7696,6 +7060,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1640930837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640930827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1666023663
 GameObject:
   m_ObjectHideFlags: 0
@@ -7709,10 +7085,7 @@ GameObject:
   - component: {fileID: 1666023671}
   - component: {fileID: 1666023670}
   - component: {fileID: 1666023669}
-  - component: {fileID: 1666023668}
-  - component: {fileID: 1666023667}
-  - component: {fileID: 1666023666}
-  - component: {fileID: 1666023665}
+  - component: {fileID: 1666023673}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -7735,54 +7108,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1666023665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666023663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1666023666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666023663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1666023667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666023663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1666023668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666023663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1666023669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7905,7 +7230,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7915,6 +7240,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1666023673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666023663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &1666744314
 GameObject:
   m_ObjectHideFlags: 0
@@ -7981,8 +7318,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4294967040
+  m_fontColor: {r: 0, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8065,10 +7402,7 @@ GameObject:
   - component: {fileID: 1707650783}
   - component: {fileID: 1707650782}
   - component: {fileID: 1707650781}
-  - component: {fileID: 1707650780}
-  - component: {fileID: 1707650779}
-  - component: {fileID: 1707650778}
-  - component: {fileID: 1707650777}
+  - component: {fileID: 1707650785}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -8091,54 +7425,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1707650777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707650775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
---- !u!114 &1707650778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707650775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1707650779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707650775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1707650780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707650775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1707650781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8261,7 +7547,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8271,6 +7557,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1707650785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707650775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &1778300570
 GameObject:
   m_ObjectHideFlags: 0
@@ -8284,10 +7582,7 @@ GameObject:
   - component: {fileID: 1778300578}
   - component: {fileID: 1778300577}
   - component: {fileID: 1778300576}
-  - component: {fileID: 1778300575}
-  - component: {fileID: 1778300574}
-  - component: {fileID: 1778300573}
-  - component: {fileID: 1778300572}
+  - component: {fileID: 1778300580}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -8310,54 +7605,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1778300572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778300570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1778300573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778300570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1778300574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778300570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1778300575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778300570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1778300576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8480,7 +7727,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.45, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8490,6 +7737,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1778300580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778300570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1782161798
 GameObject:
   m_ObjectHideFlags: 0
@@ -8640,10 +7899,7 @@ GameObject:
   - component: {fileID: 1796914034}
   - component: {fileID: 1796914033}
   - component: {fileID: 1796914032}
-  - component: {fileID: 1796914031}
-  - component: {fileID: 1796914030}
-  - component: {fileID: 1796914029}
-  - component: {fileID: 1796914028}
+  - component: {fileID: 1796914036}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -8666,54 +7922,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796914028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796914026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1796914029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796914026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1796914030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796914026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1796914031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796914026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1796914032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8836,7 +8044,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8846,6 +8054,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1796914036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796914026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1803684176
 GameObject:
   m_ObjectHideFlags: 0
@@ -8859,10 +8079,7 @@ GameObject:
   - component: {fileID: 1803684184}
   - component: {fileID: 1803684183}
   - component: {fileID: 1803684182}
-  - component: {fileID: 1803684181}
-  - component: {fileID: 1803684180}
-  - component: {fileID: 1803684179}
-  - component: {fileID: 1803684178}
+  - component: {fileID: 1803684186}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -8885,54 +8102,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1803684178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803684176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1803684179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803684176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1803684180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803684176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1803684181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803684176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1803684182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9055,7 +8224,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9065,6 +8234,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1803684186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803684176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
 --- !u!1 &1828031049
 GameObject:
   m_ObjectHideFlags: 0
@@ -9099,8 +8280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -58, y: 0}
-  m_SizeDelta: {x: -144, y: 10}
+  m_AnchoredPosition: {x: -55, y: 0}
+  m_SizeDelta: {x: -110, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1828031051
 CanvasRenderer:
@@ -9321,10 +8502,7 @@ GameObject:
   - component: {fileID: 1838595843}
   - component: {fileID: 1838595842}
   - component: {fileID: 1838595841}
-  - component: {fileID: 1838595840}
-  - component: {fileID: 1838595839}
-  - component: {fileID: 1838595838}
-  - component: {fileID: 1838595837}
+  - component: {fileID: 1838595845}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -9347,54 +8525,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1838595837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838595835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1838595838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838595835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1838595839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838595835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1838595840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838595835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1838595841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9517,7 +8647,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.45, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9527,6 +8657,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1838595845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838595835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1846227421
 GameObject:
   m_ObjectHideFlags: 0
@@ -9540,10 +8682,7 @@ GameObject:
   - component: {fileID: 1846227429}
   - component: {fileID: 1846227428}
   - component: {fileID: 1846227427}
-  - component: {fileID: 1846227426}
-  - component: {fileID: 1846227425}
-  - component: {fileID: 1846227424}
-  - component: {fileID: 1846227423}
+  - component: {fileID: 1846227431}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -9566,54 +8705,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1846227423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846227421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eec45c3142c7e4a816346bd10f0f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrongBrickController
---- !u!114 &1846227424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846227421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1846227425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846227421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1846227426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846227421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1846227427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9736,7 +8827,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.92, g: 0.15, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9746,6 +8837,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1846227431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846227421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1851642126
 GameObject:
   m_ObjectHideFlags: 0
@@ -10145,7 +9248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10183,10 +9286,7 @@ GameObject:
   - component: {fileID: 1910549397}
   - component: {fileID: 1910549396}
   - component: {fileID: 1910549395}
-  - component: {fileID: 1910549394}
-  - component: {fileID: 1910549393}
-  - component: {fileID: 1910549392}
-  - component: {fileID: 1910549391}
+  - component: {fileID: 1910549399}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -10209,54 +9309,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2018928980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1910549391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910549389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1910549392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910549389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1910549393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910549389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
---- !u!114 &1910549394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910549389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d812285b394c45ae2057c6bce1916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrickController
 --- !u!114 &1910549395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10379,7 +9431,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8222420645925065664, guid: 4e4f2a2dfb76ca04bb12018cefc3d3b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10389,6 +9441,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1910549399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910549389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5840c263d9e6a654f8bb011ad08a0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBrickController
 --- !u!1 &1955470786
 GameObject:
   m_ObjectHideFlags: 0
@@ -10455,7 +9519,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -10468,7 +9532,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2

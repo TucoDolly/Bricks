@@ -89,10 +89,12 @@ public class GameManager : MonoBehaviour
         OnPlayerNameChanged?.Invoke(PlayerName);
     }
 
-    /// <summary>Reseta a pontuação e vidas, e recarrega a cena atual.</summary>
+    /// <summary>Restaura as vidas para o valor inicial, preserva a pontuação atual e recarrega a cena.</summary>
     public void RestartMatch()
     {
-        ResetSession();
+        Lives = InitialLives;
+        OnLifeChanged?.Invoke(Lives);
+        OnScoreChanged?.Invoke(Score);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 }

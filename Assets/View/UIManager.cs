@@ -550,7 +550,7 @@ public class UIManager : MonoBehaviour
                 topBar.transform.SetAsFirstSibling();
 
                 Image barImg = topBar.AddComponent<Image>();
-                barImg.color = new Color(0.06f, 0.07f, 0.12f, 0.95f);
+                barImg.color = new Color(0.04f, 0.035f, 0.1f, 0.95f);
 
                 RectTransform barRt = topBar.GetComponent<RectTransform>();
                 barRt.anchorMin = new Vector2(0f, 1f);
@@ -559,11 +559,11 @@ public class UIManager : MonoBehaviour
                 barRt.anchoredPosition = Vector2.zero;
                 barRt.sizeDelta = new Vector2(0f, 50f);
 
-                // Linha de borda inferior (separador com cor dourada arcade)
+                // Linha de borda inferior (separador com cor neon ciano)
                 GameObject borderLine = new GameObject("BorderLine");
                 borderLine.transform.SetParent(topBar.transform, false);
                 Image lineImg = borderLine.AddComponent<Image>();
-                lineImg.color = new Color(1f, 0.82f, 0.15f, 1f);
+                lineImg.color = new Color(0f, 0.9f, 1f, 1f);
 
                 RectTransform lineRt = borderLine.GetComponent<RectTransform>();
                 lineRt.anchorMin = new Vector2(0f, 0f);
@@ -591,6 +591,7 @@ public class UIManager : MonoBehaviour
                 sRt.sizeDelta = new Vector2(120f, 40f);
                 scoreText.alignment = TextAlignmentOptions.MidlineLeft;
                 scoreText.fontSize = 20f;
+                scoreText.color = new Color(0f, 0.95f, 1f);
             }
 
             if (playerNameText != null && playerNameText.transform.parent != topBar.transform)
@@ -604,6 +605,7 @@ public class UIManager : MonoBehaviour
                 pRt.sizeDelta = new Vector2(240f, 40f);
                 playerNameText.alignment = TextAlignmentOptions.Center;
                 playerNameText.fontSize = 22f;
+                playerNameText.color = Color.white;
             }
 
             if (livesText != null && livesText.transform.parent != topBar.transform)
@@ -617,6 +619,7 @@ public class UIManager : MonoBehaviour
                 lRt.sizeDelta = new Vector2(90f, 40f);
                 livesText.alignment = TextAlignmentOptions.MidlineRight;
                 livesText.fontSize = 18f;
+                livesText.color = new Color(1f, 0.2f, 0.5f);
             }
 
             if (pauseButton != null && pauseButton.transform.parent != topBar.transform)

@@ -4,7 +4,15 @@ public class PlayerView : MonoBehaviour
 {
 
     private PlayerController _playerController;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        var sr = GetComponent<SpriteRenderer>();
+        if (sr != null && (sr.color == Color.white || sr.color == Color.clear))
+        {
+            sr.color = new Color(0.1f, 1f, 0.5f, 1f); // Verde Limão Neon (#1AFF80)
+        }
+    }
+
     void Start()
     {
         _playerController = GetComponent<PlayerController>(); 

@@ -183,7 +183,7 @@ public static class SetupAllScenes
             topBarObj.transform.SetParent(canvas.transform, false);
             topBarObj.transform.SetAsFirstSibling();
             Image barImg = topBarObj.AddComponent<Image>();
-            barImg.color = new Color(0.06f, 0.07f, 0.12f, 0.95f);
+            barImg.color = new Color(0.04f, 0.035f, 0.1f, 0.95f);
             RectTransform barRt = topBarObj.GetComponent<RectTransform>();
             barRt.anchorMin = new Vector2(0f, 1f);
             barRt.anchorMax = new Vector2(1f, 1f);
@@ -191,11 +191,11 @@ public static class SetupAllScenes
             barRt.anchoredPosition = Vector2.zero;
             barRt.sizeDelta = new Vector2(0f, 50f);
 
-            // Linha dourada separadora na parte inferior da barra
+            // Linha neon ciano separadora na parte inferior da barra
             GameObject borderLine = new GameObject("BorderLine");
             borderLine.transform.SetParent(topBarObj.transform, false);
             Image lineImg = borderLine.AddComponent<Image>();
-            lineImg.color = new Color(1f, 0.82f, 0.15f, 1f);
+            lineImg.color = new Color(0f, 0.9f, 1f, 1f);
             RectTransform lineRt = borderLine.GetComponent<RectTransform>();
             lineRt.anchorMin = new Vector2(0f, 0f);
             lineRt.anchorMax = new Vector2(1f, 0f);
@@ -237,6 +237,7 @@ public static class SetupAllScenes
             scoreTmp.transform.SetParent(topBarObj.transform, false);
             scoreTmp.text = "0";
             scoreTmp.fontSize = 20f;
+            scoreTmp.color = new Color(0f, 0.95f, 1f, 1f); // Ciano Neon (#00F5FF)
             scoreTmp.alignment = TextAlignmentOptions.MidlineLeft;
             RectTransform sRt = scoreTmp.rectTransform;
             sRt.anchorMin = new Vector2(0f, 0.5f);
@@ -246,13 +247,14 @@ public static class SetupAllScenes
             sRt.sizeDelta = new Vector2(120f, 40f);
         }
 
-        // Vidas dentro da TopBar (lado direito)
+        // Vidas dentro da TopBar (lado direito em Rosa Neon)
         TextMeshProUGUI livesTmp = topBarObj.transform.Find("TextoVidas")?.GetComponent<TextMeshProUGUI>()
                                    ?? canvas.transform.Find("TextoVidas")?.GetComponent<TextMeshProUGUI>();
         if (livesTmp != null)
         {
             livesTmp.transform.SetParent(topBarObj.transform, false);
             livesTmp.fontSize = 18f;
+            livesTmp.color = new Color(1f, 0.2f, 0.5f, 1f); // Rosa Neon (#FF3380)
             livesTmp.alignment = TextAlignmentOptions.MidlineRight;
             RectTransform lRt = livesTmp.rectTransform;
             lRt.anchorMin = new Vector2(1f, 0.5f);
