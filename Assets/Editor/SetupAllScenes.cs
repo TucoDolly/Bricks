@@ -437,26 +437,20 @@ public static class SetupAllScenes
         vicScoreText.color = Color.yellow;
         vicScoreText.alignment = TextAlignmentOptions.Center;
 
-        // Botões no VictoryPanel
-        Transform btnCont = victoryPanelObj.transform.Find("Btn_Continuar");
-        if (btnCont == null)
-        {
-            GameObject btn = CreateButton(victoryPanelObj.transform, "Btn_Continuar", "CONTINUAR", new Vector2(0, -10), new Vector2(300, 55));
-            UnityEditor.Events.UnityEventTools.AddPersistentListener(btn.GetComponent<Button>().onClick, uiManager.Btn_NextLevel);
-            btnCont = btn.transform;
-        }
-        btnCont.gameObject.SetActive(!isLastStage);
-
+        // Botões no VictoryPanel: RECOMEÇAR (topo), MENU INICIAL (meio) e CONTINUAR (base)
         Transform btnRec = victoryPanelObj.transform.Find("Btn_Recomecar");
         if (btnRec == null)
         {
-            GameObject btn = CreateButton(victoryPanelObj.transform, "Btn_Recomecar", isLastStage ? "JOGAR NOVAMENTE" : "RECOMEÇAR", new Vector2(0, -80), new Vector2(300, 55));
+            GameObject btn = CreateButton(victoryPanelObj.transform, "Btn_Recomecar", isLastStage ? "JOGAR NOVAMENTE" : "RECOMEÇAR", new Vector2(0, -80), new Vector2(250, 50));
             UnityEditor.Events.UnityEventTools.AddPersistentListener(btn.GetComponent<Button>().onClick, uiManager.Btn_RestartGame);
         }
         else
         {
             RectTransform recRt = btnRec.GetComponent<RectTransform>();
+            recRt.anchorMin = new Vector2(0.5f, 0.5f);
+            recRt.anchorMax = new Vector2(0.5f, 0.5f);
             recRt.anchoredPosition = new Vector2(0, -80);
+            recRt.sizeDelta = new Vector2(250, 50);
             var tmp = btnRec.GetComponentInChildren<TextMeshProUGUI>();
             if (tmp != null && isLastStage) tmp.text = "JOGAR NOVAMENTE";
         }
@@ -464,14 +458,34 @@ public static class SetupAllScenes
         Transform btnMenu = victoryPanelObj.transform.Find("Btn_Menu");
         if (btnMenu == null)
         {
-            GameObject btn = CreateButton(victoryPanelObj.transform, "Btn_Menu", "MENU INICIAL", new Vector2(0, -150), new Vector2(300, 55));
+            GameObject btn = CreateButton(victoryPanelObj.transform, "Btn_Menu", "MENU INICIAL", new Vector2(0, -145), new Vector2(250, 50));
             UnityEditor.Events.UnityEventTools.AddPersistentListener(btn.GetComponent<Button>().onClick, uiManager.Btn_LoadMainMenu);
         }
         else
         {
             RectTransform menuRt = btnMenu.GetComponent<RectTransform>();
-            menuRt.anchoredPosition = new Vector2(0, -150);
+            menuRt.anchorMin = new Vector2(0.5f, 0.5f);
+            menuRt.anchorMax = new Vector2(0.5f, 0.5f);
+            menuRt.anchoredPosition = new Vector2(0, -145);
+            menuRt.sizeDelta = new Vector2(250, 50);
         }
+
+        Transform btnCont = victoryPanelObj.transform.Find("Btn_Continuar");
+        if (btnCont == null)
+        {
+            GameObject btn = CreateButton(victoryPanelObj.transform, "Btn_Continuar", "CONTINUAR", new Vector2(0, -210), new Vector2(250, 50));
+            UnityEditor.Events.UnityEventTools.AddPersistentListener(btn.GetComponent<Button>().onClick, uiManager.Btn_NextLevel);
+            btnCont = btn.transform;
+        }
+        else
+        {
+            RectTransform contRt = btnCont.GetComponent<RectTransform>();
+            contRt.anchorMin = new Vector2(0.5f, 0.5f);
+            contRt.anchorMax = new Vector2(0.5f, 0.5f);
+            contRt.anchoredPosition = new Vector2(0, -210);
+            contRt.sizeDelta = new Vector2(250, 50);
+        }
+        btnCont.gameObject.SetActive(!isLastStage);
 
         victoryPanelObj.SetActive(false);
 
@@ -506,13 +520,13 @@ public static class SetupAllScenes
             UnityEditor.Events.UnityEventTools.AddPersistentListener(pauseBtn.onClick, uiManager.TogglePause);
         }
 
-        // RectTransform exato da SampleScene
+        // RectTransform compacto no canto superior direito (ao lado dos corações)
         RectTransform btnPauseRt = pauseBtnObj.GetComponent<RectTransform>();
-        btnPauseRt.anchorMin = new Vector2(0f, 0f);
-        btnPauseRt.anchorMax = new Vector2(1f, 1f);
+        btnPauseRt.anchorMin = new Vector2(1f, 0.5f);
+        btnPauseRt.anchorMax = new Vector2(1f, 0.5f);
         btnPauseRt.pivot = new Vector2(1f, 0.5f);
-        btnPauseRt.anchoredPosition = new Vector2(-5f, 0f);
-        btnPauseRt.sizeDelta = new Vector2(-205f, -10f);
+        btnPauseRt.anchoredPosition = new Vector2(-12f, 0f);
+        btnPauseRt.sizeDelta = new Vector2(34f, 24f);
 
         // Desativa texto escrito ("PAUSE" não deve ser exibido, apenas o ícone ||)
         foreach (var t in pauseBtnObj.GetComponentsInChildren<TextMeshProUGUI>(true))
