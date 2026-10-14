@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI livesText;
+    [SerializeField] private GameObject livesContainer;
+    [SerializeField] private Image[] lifeHeartImages;
     [SerializeField] private TextMeshProUGUI playerNameText;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject victoryPanel;
@@ -37,6 +39,25 @@ public class UIManager : MonoBehaviour
         if (scoreText == null) scoreText = FindByName("TextoPontos");
         if (livesText == null) livesText = FindByName("TextoVidas");
         if (playerNameText == null) playerNameText = FindByName("TextoJogador") ?? FindByName("TextoNome");
+
+        // Procura container de corações se ainda não atribuído
+        if (livesContainer == null)
+        {
+            GameObject containerFound = GameObject.Find("LivesContainer");
+            if (containerFound != null) livesContainer = containerFound;
+        }
+
+        if (livesContainer != null && (lifeHeartImages == null || lifeHeartImages.Length == 0))
+        {
+            lifeHeartImages = livesContainer.GetComponentsInChildren<Image>(true);
+            // Se o próprio container tiver Image (não deveria, mas por segurança filtra apenas os filhos)
+            var list = new System.Collections.Generic.List<Image>();
+            foreach (var img in lifeHeartImages)
+            {
+                if (img.gameObject != livesContainer) list.Add(img);
+            }
+            if (list.Count > 0) lifeHeartImages = list.ToArray();
+        }
 
         // Garante que os painéis comecem ocultos durante a gameplay, mesmo que você os deixe ativos no editor para posicionar
         if (victoryPanel != null) victoryPanel.SetActive(false);
@@ -161,7 +182,26 @@ public class UIManager : MonoBehaviour
 
     private void UpdateLives(int lives)
     {
-        if (livesText != null) livesText.text = "Vidas: " + lives;
+        // Se corações neon estiverem disponíveis, controla a visibilidade de cada um
+        if (lifeHeartImages != null && lifeHeartImages.Length > 0)
+        {
+            for (int i = 0; i < lifeHeartImages.Length; i++)
+            {
+                if (lifeHeartImages[i] != null)
+                {
+                    bool active = i < lives;
+                    lifeHeartImages[i].gameObject.SetActive(active);
+                }
+            }
+            if (livesText != null)
+            {
+                livesText.gameObject.SetActive(false);
+            }
+        }
+        else if (livesText != null)
+        {
+            livesText.text = "Vidas: " + lives;
+        }
     }
 
     private void UpdatePlayerName(string playerName)
@@ -176,6 +216,19 @@ public class UIManager : MonoBehaviour
             _lastScreenWidth = Screen.width;
             _lastScreenHeight = Screen.height;
             AdjustTopWallToTopBar();
+        }
+
+        // Clique do mouse direto sobre o botão de pause (não depende do EventSystem/raycast da UI)
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame &&
+            pauseButton != null && pauseButton.gameObject.activeInHierarchy && !isPaused)
+        {
+            RectTransform pauseRt = (RectTransform)pauseButton.transform;
+            Canvas pauseCanvas = pauseButton.GetComponentInParent<Canvas>();
+            Camera uiCam = (pauseCanvas != null && pauseCanvas.renderMode != RenderMode.ScreenSpaceOverlay) ? pauseCanvas.worldCamera : null;
+            if (RectTransformUtility.RectangleContainsScreenPoint(pauseRt, Mouse.current.position.ReadValue(), uiCam))
+            {
+                TogglePause();
+            }
         }
 
         if (Keyboard.current != null)
@@ -259,7 +312,7 @@ public class UIManager : MonoBehaviour
             TextMeshProUGUI playerTxt = victoryPanel.transform.Find("Text_VictoryPlayer")?.GetComponent<TextMeshProUGUI>();
             if (playerTxt == null)
             {
-                playerTxt = CreateVictoryText(victoryPanel.transform, "Text_VictoryPlayer", new Vector2(0, 90), 30, Color.white);
+                playerTxt = CreateVictoryText(victoryPanel.transform, "Text_VictoryPlayer", new Vector2(0, 90), 30);
             }
             if (playerTxt != null)
             {
@@ -270,7 +323,7 @@ public class UIManager : MonoBehaviour
             TextMeshProUGUI scoreTxt = victoryPanel.transform.Find("Text_VictoryScore")?.GetComponent<TextMeshProUGUI>();
             if (scoreTxt == null)
             {
-                scoreTxt = CreateVictoryText(victoryPanel.transform, "Text_VictoryScore", new Vector2(0, 50), 32, Color.yellow);
+                scoreTxt = CreateVictoryText(victoryPanel.transform, "Text_VictoryScore", new Vector2(0, 50), 32);
             }
             if (scoreTxt != null)
             {
@@ -294,14 +347,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private TextMeshProUGUI CreateVictoryText(Transform parent, string name, Vector2 pos, float fontSize, Color color)
+    private TextMeshProUGUI CreateVictoryText(Transform parent, string name, Vector2 pos, float fontSize)
     {
         GameObject obj = new GameObject(name);
         obj.transform.SetParent(parent, false);
         TextMeshProUGUI tmp = obj.AddComponent<TextMeshProUGUI>();
         tmp.text = "";
         tmp.fontSize = fontSize;
-        tmp.color = color;
+        NeonUIStyle.StyleTextByRole(tmp, NeonAssetProvider.Runtime); // cor neon pelo papel do texto
         tmp.alignment = TextAlignmentOptions.Center;
         RectTransform rt = obj.GetComponent<RectTransform>();
         rt.anchoredPosition = pos;
@@ -346,8 +399,8 @@ public class UIManager : MonoBehaviour
         TextMeshProUGUI tmp = textObj.AddComponent<TextMeshProUGUI>();
         tmp.text = "FASE " + buildIndex;
         tmp.fontSize = 80;
-        tmp.color = Color.white;
         tmp.alignment = TextAlignmentOptions.Center;
+        NeonUIStyle.StyleTextByRole(tmp, NeonAssetProvider.Runtime); // ciano neon pulsante
         RectTransform rt = textObj.GetComponent<RectTransform>();
         rt.anchoredPosition = Vector2.zero;
         rt.sizeDelta = new Vector2(600, 200);
@@ -363,8 +416,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private int _lastToggleFrame = -1;
+
     public void TogglePause()
     {
+        if (_lastToggleFrame == Time.frameCount) return; // evita toggle duplo (clique + onClick)
+        _lastToggleFrame = Time.frameCount;
+
         if (isPaused)
             ResumeGame();
         else
@@ -500,11 +558,11 @@ public class UIManager : MonoBehaviour
         btnObj.transform.SetParent(parent, false);
 
         RectTransform rt = btnObj.GetComponent<RectTransform>();
-        rt.anchorMin = new Vector2(1f, 0.5f);
-        rt.anchorMax = new Vector2(1f, 0.5f);
+        rt.anchorMin = new Vector2(0f, 0f);
+        rt.anchorMax = new Vector2(1f, 1f);
         rt.pivot = new Vector2(1f, 0.5f);
-        rt.anchoredPosition = new Vector2(-15f, 0f);
-        rt.sizeDelta = new Vector2(58f, 28f);
+        rt.anchoredPosition = new Vector2(-5f, 0f);
+        rt.sizeDelta = new Vector2(-205f, -10f);
 
         Text defaultText = btnObj.GetComponentInChildren<Text>();
         if (defaultText != null) Destroy(defaultText.gameObject);
@@ -515,14 +573,15 @@ public class UIManager : MonoBehaviour
         tmp.text = "PAUSE";
         tmp.fontSize = 13f;
         tmp.fontStyle = FontStyles.Bold;
-        tmp.color = new Color(0.15f, 0.15f, 0.15f);
         tmp.alignment = TextAlignmentOptions.Center;
         RectTransform textRt = textObj.GetComponent<RectTransform>();
         textRt.anchorMin = Vector2.zero;
         textRt.anchorMax = Vector2.one;
         textRt.sizeDelta = Vector2.zero;
 
-        return btnObj.GetComponent<Button>();
+        Button pauseBtn = btnObj.GetComponent<Button>();
+        NeonUIStyle.StyleButton(pauseBtn, NeonUIStyle.Cyan, NeonAssetProvider.Runtime);
+        return pauseBtn;
     }
 
     private void EnsureTopBarUI()
@@ -626,12 +685,110 @@ public class UIManager : MonoBehaviour
             {
                 pauseButton.transform.SetParent(topBar.transform, false);
                 RectTransform bRt = pauseButton.GetComponent<RectTransform>();
-                bRt.anchorMin = new Vector2(1f, 0.5f);
-                bRt.anchorMax = new Vector2(1f, 0.5f);
+                bRt.anchorMin = new Vector2(0f, 0f);
+                bRt.anchorMax = new Vector2(1f, 1f);
                 bRt.pivot = new Vector2(1f, 0.5f);
-                bRt.anchoredPosition = new Vector2(-15f, 0f);
-                bRt.sizeDelta = new Vector2(58f, 28f);
+                bRt.anchoredPosition = new Vector2(-5f, 0f);
+                bRt.sizeDelta = new Vector2(-205f, -10f);
             }
+        }
+
+        // Garante a existência do LivesContainer com os corações de neon na TopBar
+        EnsureLivesHeartsUI();
+    }
+
+    private void EnsureLivesHeartsUI()
+    {
+        if (topBar == null) return;
+
+        Vector2 livesPos = new Vector2(-80f, 0f);
+        if (livesText != null)
+        {
+            livesPos = livesText.rectTransform.anchoredPosition;
+        }
+
+        if (livesContainer == null)
+        {
+            Transform existing = topBar.transform.Find("LivesContainer");
+            if (existing != null)
+            {
+                livesContainer = existing.gameObject;
+            }
+            else
+            {
+                livesContainer = new GameObject("LivesContainer");
+                livesContainer.transform.SetParent(topBar.transform, false);
+
+                RectTransform lcRt = livesContainer.AddComponent<RectTransform>();
+                lcRt.anchorMin = new Vector2(1f, 0.5f);
+                lcRt.anchorMax = new Vector2(1f, 0.5f);
+                lcRt.pivot = new Vector2(1f, 0.5f);
+                lcRt.anchoredPosition = livesPos;
+                lcRt.sizeDelta = new Vector2(58f, 20f);
+
+                HorizontalLayoutGroup hlg = livesContainer.AddComponent<HorizontalLayoutGroup>();
+                hlg.childAlignment = TextAnchor.MiddleRight;
+                hlg.spacing = 3f;
+                hlg.childControlWidth = false;
+                hlg.childControlHeight = false;
+                hlg.childForceExpandWidth = false;
+                hlg.childForceExpandHeight = false;
+            }
+        }
+        else
+        {
+            RectTransform lcRt = livesContainer.GetComponent<RectTransform>();
+            if (lcRt != null)
+            {
+                lcRt.anchoredPosition = livesPos;
+                lcRt.sizeDelta = new Vector2(58f, 20f);
+            }
+        }
+
+        // Garante os 3 corações dentro do LivesContainer
+        Sprite heartSprite = NeonAssetProvider.Runtime.HeartSprite;
+        var images = new System.Collections.Generic.List<Image>();
+
+        for (int i = 0; i < 3; i++)
+        {
+            string heartName = "Heart_" + (i + 1);
+            Transform hTrans = livesContainer.transform.Find(heartName);
+            Image img;
+            if (hTrans != null)
+            {
+                img = hTrans.GetComponent<Image>();
+                RectTransform hRt = img.rectTransform;
+                if (hRt != null) hRt.sizeDelta = new Vector2(16f, 16f);
+            }
+            else
+            {
+                GameObject hObj = new GameObject(heartName);
+                hObj.transform.SetParent(livesContainer.transform, false);
+                RectTransform hRt = hObj.AddComponent<RectTransform>();
+                hRt.sizeDelta = new Vector2(16f, 16f);
+                img = hObj.AddComponent<Image>();
+            }
+
+            if (img != null)
+            {
+                if (heartSprite != null) img.sprite = heartSprite;
+                img.color = NeonUIStyle.Pink;
+                img.raycastTarget = false;
+                images.Add(img);
+            }
+        }
+
+        lifeHeartImages = images.ToArray();
+
+        // Oculta o texto numérico antigo se o container com corações foi criado
+        if (livesText != null)
+        {
+            livesText.gameObject.SetActive(false);
+        }
+
+        if (GameManager.Instance != null)
+        {
+            UpdateLives(GameManager.Instance.Lives);
         }
     }
 
@@ -673,7 +830,7 @@ public class UIManager : MonoBehaviour
         GameObject panelObj = new GameObject("PausePanel");
         panelObj.transform.SetParent(parent, false);
         Image bg = panelObj.AddComponent<Image>();
-        bg.color = new Color(0f, 0f, 0f, 0.85f);
+        bg.color = new Color(NeonUIStyle.DeepSpace.r, NeonUIStyle.DeepSpace.g, NeonUIStyle.DeepSpace.b, 0.82f);
 
         RectTransform panelRt = panelObj.GetComponent<RectTransform>();
         panelRt.anchorMin = Vector2.zero;
@@ -688,8 +845,8 @@ public class UIManager : MonoBehaviour
         titleTmp.text = "PAUSE";
         titleTmp.fontSize = 54f;
         titleTmp.fontStyle = FontStyles.Bold;
-        titleTmp.color = Color.yellow;
         titleTmp.alignment = TextAlignmentOptions.Center;
+        NeonUIStyle.StyleTextByRole(titleTmp, NeonAssetProvider.Runtime);
         RectTransform titleRt = titleObj.GetComponent<RectTransform>();
         titleRt.anchoredPosition = new Vector2(0f, 130f);
         titleRt.sizeDelta = new Vector2(600f, 70f);
@@ -725,7 +882,6 @@ public class UIManager : MonoBehaviour
         tmp.text = text;
         tmp.fontSize = 22f;
         tmp.fontStyle = FontStyles.Bold;
-        tmp.color = Color.black;
         tmp.alignment = TextAlignmentOptions.Center;
         RectTransform textRt = textObj.GetComponent<RectTransform>();
         textRt.anchorMin = Vector2.zero;
@@ -734,6 +890,7 @@ public class UIManager : MonoBehaviour
 
         Button b = btnObj.GetComponent<Button>();
         if (action != null) b.onClick.AddListener(action);
+        NeonUIStyle.StyleButton(b, NeonUIStyle.ButtonColorFor(name), NeonAssetProvider.Runtime);
         return btnObj;
     }
 }

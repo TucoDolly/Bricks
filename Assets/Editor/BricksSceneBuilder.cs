@@ -329,7 +329,7 @@ public static class BricksSceneBuilder
         const float topStartY = 4.5f;
         const float bottomStartY = 1.0f; 
 
-        void CreateSquare(float startYPos)
+        void CreateSquare(float startYPos, bool isTop)
         {
             for (int row = 0; row < 3; row++) 
             {
@@ -337,20 +337,23 @@ public static class BricksSceneBuilder
                 {
                     Vector3 pos = new Vector3(-1.5f + col * spacingX, startYPos - row * spacingY, 0f);
                     bool isStrong = (row == 0 || row == 2 || col == 0 || col == 3);
-                    CreateClonedBrick(template, container.transform, pos, isStrong);
+                    Color customColor = isStrong 
+                        ? new Color(0.92f, 0.15f, 1f) 
+                        : (isTop ? new Color(0.1f, 1f, 0.5f) : new Color(0f, 0.9f, 1f));
+                    CreateClonedBrick(template, container.transform, pos, isStrong, customColor);
                 }
             }
         }
 
-        CreateSquare(topStartY);
-        CreateSquare(bottomStartY);
+        CreateSquare(topStartY, true);
+        CreateSquare(bottomStartY, false);
 
         Object.DestroyImmediate(template);
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         Debug.Log("[BricksSceneBuilder] Fase 3 gerada com sucesso mantendo os sprites originais!");
     }
 
-    private static void CreateClonedBrick(GameObject template, Transform parent, Vector3 position, bool isStrong)
+    private static void CreateClonedBrick(GameObject template, Transform parent, Vector3 position, bool isStrong, Color? customColor = null)
     {
         GameObject brick = Object.Instantiate(template, position, Quaternion.identity, parent);
         brick.name = "Brick";
@@ -380,12 +383,12 @@ public static class BricksSceneBuilder
         if (isStrong)
         {
             Undo.AddComponent<StrongBrickController>(brick);
-            if (sr != null) sr.color = new Color(0.85f, 0.25f, 0.25f);
+            if (sr != null) sr.color = customColor ?? new Color(0.92f, 0.15f, 1f);
         }
         else
         {
             Undo.AddComponent<NormalBrickController>(brick);
-            if (sr != null) sr.color = Color.white;
+            if (sr != null) sr.color = customColor ?? Color.white;
         }
     }
 
@@ -608,8 +611,10 @@ public static class BricksSceneBuilder
             EditorSceneManager.SaveScene(menuScene);
         }
 
-        // Atualiza a UI estilizada em todas as cenas
-        SetupAllScenes.UpdateAllScenes();
+        // Aplica o visual neon nas telas (Início, Pause, Vitória, Game Over) preservando o layout do Canvas.
+        // (Não chama mais SetupAllScenes aqui, pois ele reposiciona botões/textos das telas.)
+        NeonUIStyler.ApplyToAllScenes();
+        EditorSceneManager.OpenScene(menuPath);
 
         Debug.Log("[BricksSceneBuilder] Visual Neon Arcade 80s aplicado com sucesso em todas as cenas!");
     }

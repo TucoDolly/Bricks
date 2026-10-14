@@ -20,29 +20,43 @@ public class BallView : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        bool isBrick = collision.gameObject.TryGetComponent(out BrickView _brickView);
+        HandleCollision(collision, isEnter: true);
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        // Se a bola ficar presa ou em contato contínuo com obstáculo/tijolos, resolve imediatamente
+        HandleCollision(collision, isEnter: false);
+    }
+
+    private void HandleCollision(Collision2D collision, bool isEnter)
+    {
+        bool isBrick = collision.gameObject.TryGetComponent(out BrickView brickView);
 
         if (isBrick)
         {
-            // Evita quebrar 2 tijolos quase ao mesmo tempo (ex: quiques duplos em cantos)
-            if (Time.fixedTime - _lastBrickHitTime < 0.05f) return;
-            _lastBrickHitTime = Time.fixedTime;
-            
-            AudioController.Instance.PlayBrickHit();
-            // A pontuação agora é gerenciada dentro do BrickController para não dar conflito no Restart
-            _brickView.PerformTakeDamage(1f);
+            // Causa dano no impacto inicial ou a cada intervalo mínimo se estiver em contato
+            if (isEnter || (Time.fixedTime - _lastBrickHitTime >= 0.08f))
+            {
+                AudioController.Instance.PlayBrickHit();
+                _lastBrickHitTime = Time.fixedTime;
+                brickView.PerformTakeDamage(1f);
+            }
         }
 
         if (!collision.gameObject.TryGetComponent<PlayerController>(out _))
         {
-            if (!isBrick) AudioController.Instance.PlayBallHit();
+            if (!isBrick && isEnter) AudioController.Instance.PlayBallHit();
             _ballController.PerfectAngleReflect(collision);
         }
         else
         {
-            AudioController.Instance.PlayPlayerHit();
-            _ballController.CalcBallAngleReflect(collision);
-            if (GameManager.Instance != null) GameManager.Instance.AddScore(-5);
+            if (isEnter)
+            {
+                AudioController.Instance.PlayPlayerHit();
+                _ballController.CalcBallAngleReflect(collision);
+                if (GameManager.Instance != null) GameManager.Instance.AddScore(-5);
+            }
         }
     }
 }

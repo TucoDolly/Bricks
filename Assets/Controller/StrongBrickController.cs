@@ -4,7 +4,7 @@ using UnityEngine;
 public class StrongBrickController : BrickController
 {
     public static readonly Color FullHealthColor = new Color(0.92f, 0.15f, 1.0f); // Roxo / Magenta Neon Arcade 80s (#EA26FF)
-    public static readonly Color DamagedColor    = new Color(1.0f, 0.92f, 0.1f);  // Amarelo Neon (#FFEB1A)
+    public static readonly Color DamagedColor    = new Color(1.0f, 0.15f, 0.2f);   // Vermelho Neon (#FF2633)
 
     private SpriteRenderer _spriteRenderer;
 

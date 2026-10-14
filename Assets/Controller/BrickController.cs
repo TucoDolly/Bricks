@@ -32,6 +32,8 @@ public class BrickController : MonoBehaviour
     /// <summary>Aplica dano ao tijolo. Retorna true se ele foi destruído.</summary>
     public bool TakeDamage(float damage)
     {
+        if (_brickModel == null || _brickModel.Health <= 0f) return true;
+
         _brickModel.Health -= damage;
         if (_brickModel.Health > 0f)
         {
@@ -39,12 +41,16 @@ public class BrickController : MonoBehaviour
             return false;
         }
 
+        // Desativa o colisor imediatamente para que a física pare instantaneamente de colidir
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+
         OnBrickDestroyed();
 
         int activeBricks = 0;
         foreach (var brick in FindObjectsByType<BrickController>(FindObjectsInactive.Include))
         {
-            if (brick != this && brick.gameObject.activeInHierarchy && brick._brickModel.Health > 0f)
+            if (brick != this && brick.gameObject.activeInHierarchy && brick._brickModel != null && brick._brickModel.Health > 0f)
                 activeBricks++;
         }
         bool ultimo = activeBricks == 0;
