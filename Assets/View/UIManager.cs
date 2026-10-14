@@ -558,11 +558,11 @@ public class UIManager : MonoBehaviour
         btnObj.transform.SetParent(parent, false);
 
         RectTransform rt = btnObj.GetComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0f, 0f);
-        rt.anchorMax = new Vector2(1f, 1f);
+        rt.anchorMin = new Vector2(1f, 0.5f);
+        rt.anchorMax = new Vector2(1f, 0.5f);
         rt.pivot = new Vector2(1f, 0.5f);
-        rt.anchoredPosition = new Vector2(-5f, 0f);
-        rt.sizeDelta = new Vector2(-205f, -10f);
+        rt.anchoredPosition = new Vector2(-12f, 0f);
+        rt.sizeDelta = new Vector2(34f, 24f);
 
         Text defaultText = btnObj.GetComponentInChildren<Text>();
         if (defaultText != null) Destroy(defaultText.gameObject);
@@ -685,11 +685,11 @@ public class UIManager : MonoBehaviour
             {
                 pauseButton.transform.SetParent(topBar.transform, false);
                 RectTransform bRt = pauseButton.GetComponent<RectTransform>();
-                bRt.anchorMin = new Vector2(0f, 0f);
-                bRt.anchorMax = new Vector2(1f, 1f);
+                bRt.anchorMin = new Vector2(1f, 0.5f);
+                bRt.anchorMax = new Vector2(1f, 0.5f);
                 bRt.pivot = new Vector2(1f, 0.5f);
-                bRt.anchoredPosition = new Vector2(-5f, 0f);
-                bRt.sizeDelta = new Vector2(-205f, -10f);
+                bRt.anchoredPosition = new Vector2(-12f, 0f);
+                bRt.sizeDelta = new Vector2(34f, 24f);
             }
         }
 
@@ -701,7 +701,7 @@ public class UIManager : MonoBehaviour
     {
         if (topBar == null) return;
 
-        Vector2 livesPos = new Vector2(-80f, 0f);
+        Vector2 livesPos = new Vector2(-58f, 0f);
         if (livesText != null)
         {
             livesPos = livesText.rectTransform.anchoredPosition;
@@ -740,7 +740,9 @@ public class UIManager : MonoBehaviour
             RectTransform lcRt = livesContainer.GetComponent<RectTransform>();
             if (lcRt != null)
             {
-                lcRt.anchoredPosition = livesPos;
+                // Se estiver com posição antiga (-80), atualiza para -58 (ao lado do pause)
+                if (Mathf.Approximately(lcRt.anchoredPosition.x, -80f))
+                    lcRt.anchoredPosition = new Vector2(-58f, 0f);
                 lcRt.sizeDelta = new Vector2(58f, 20f);
             }
         }
