@@ -384,8 +384,9 @@ public class UIManager : MonoBehaviour
 
     private System.Collections.IEnumerator LevelStartSequence()
     {
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         int buildIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        if (buildIndex == 0) yield break; // Não faz isso no menu
+        if (buildIndex == 0 && currentSceneName == "MainMenu") yield break; // Não faz isso no menu
 
         Canvas canvas = FindAnyObjectByType<Canvas>();
         if (canvas == null) yield break;
@@ -397,12 +398,37 @@ public class UIManager : MonoBehaviour
         GameObject textObj = new GameObject("LevelStartText");
         textObj.transform.SetParent(canvas.transform, false);
         TextMeshProUGUI tmp = textObj.AddComponent<TextMeshProUGUI>();
-        tmp.text = "FASE " + buildIndex;
-        tmp.fontSize = 80;
+
+        bool isFase3 = buildIndex == 3 || currentSceneName == "Fase3";
+        int displayPhase = buildIndex > 0 ? buildIndex : (isFase3 ? 3 : (currentSceneName == "Fase2" ? 2 : 1));
+        tmp.text = "FASE " + displayPhase;
+        tmp.fontSize = isFase3 ? 70 : 80;
         tmp.alignment = TextAlignmentOptions.Center;
         NeonUIStyle.StyleTextByRole(tmp, NeonAssetProvider.Runtime); // ciano neon pulsante
         RectTransform rt = textObj.GetComponent<RectTransform>();
-        rt.anchoredPosition = Vector2.zero;
+
+        if (isFase3)
+        {
+            // Posiciona exatamente no vão livre entre as duas porções de tijolos (Y mundial = 2.25)
+            Camera cam = Camera.main;
+            if (cam != null && RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.transform as RectTransform,
+                cam.WorldToScreenPoint(new Vector3(0, 2.25f, 0)),
+                null,
+                out Vector2 localPoint))
+            {
+                rt.anchoredPosition = new Vector2(0, localPoint.y);
+            }
+            else
+            {
+                rt.anchoredPosition = new Vector2(0, 75f);
+            }
+        }
+        else
+        {
+            rt.anchoredPosition = Vector2.zero;
+        }
+
         rt.sizeDelta = new Vector2(600, 200);
 
         // Espera 2 segundos reais (já que timeScale = 0)
