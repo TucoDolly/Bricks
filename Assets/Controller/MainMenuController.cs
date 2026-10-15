@@ -13,6 +13,8 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        AudioController.Instance?.RegisterAllButtonsInScene();
+
         if (nameInputPanel == null)
         {
             FindPanelReferences();
@@ -65,6 +67,7 @@ public class MainMenuController : MonoBehaviour
         if (nameInputPanel != null)
         {
             nameInputPanel.SetActive(true);
+            AudioController.Instance?.RegisterAllButtonsInScene();
             if (nameInputField == null)
             {
                 nameInputField = nameInputPanel.GetComponentInChildren<TMP_InputField>(true);

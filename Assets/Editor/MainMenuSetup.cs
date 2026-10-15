@@ -35,7 +35,9 @@ public class MainMenuSetup
         
         // Câmera
         GameObject camObj = new GameObject("Main Camera");
+        camObj.tag = "MainCamera";
         Camera cam = camObj.AddComponent<Camera>();
+        camObj.AddComponent<AudioListener>();
         cam.clearFlags = CameraClearFlags.SolidColor;
         cam.backgroundColor = new Color(0.1f, 0.1f, 0.15f);
 

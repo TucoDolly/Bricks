@@ -5,10 +5,10 @@ using UnityEngine.UI;
 /// <summary>
 /// Micro-animação neon dos botões: a moldura "respira" levemente e acende ao passar o mouse,
 /// com um pequeno zoom. Usa tempo não escalado, pois as telas aparecem com Time.timeScale = 0.
-/// Não altera posição/tamanho do layout (o zoom é só visual e volta ao normal ao sair).
+/// Agora inclui efeitos sonoros táteis ao passar o mouse e ao clicar.
 /// </summary>
 [DisallowMultipleComponent]
-public class NeonButtonFx : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class NeonButtonFx : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Image frame;
     [SerializeField] private Color neonColor = new Color(0f, 0.9f, 1f);
@@ -48,8 +48,25 @@ public class NeonButtonFx : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         transform.localScale = _baseScale;
     }
 
-    public void OnPointerEnter(PointerEventData eventData) => _hovered = true;
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _hovered = true;
+        if (_selectable == null || _selectable.IsInteractable())
+        {
+            AudioController.Instance?.PlayButtonHover();
+        }
+    }
+
     public void OnPointerExit(PointerEventData eventData) => _hovered = false;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData != null && eventData.button != PointerEventData.InputButton.Left) return;
+        if (_selectable == null || _selectable.IsInteractable())
+        {
+            AudioController.Instance?.PlayButtonClick();
+        }
+    }
 
     private void Update()
     {

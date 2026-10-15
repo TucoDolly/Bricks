@@ -227,6 +227,7 @@ public class UIManager : MonoBehaviour
             Camera uiCam = (pauseCanvas != null && pauseCanvas.renderMode != RenderMode.ScreenSpaceOverlay) ? pauseCanvas.worldCamera : null;
             if (RectTransformUtility.RectangleContainsScreenPoint(pauseRt, Mouse.current.position.ReadValue(), uiCam))
             {
+                AudioController.Instance?.PlayButtonClick();
                 TogglePause();
             }
         }
@@ -266,6 +267,7 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("[UIManager] Painel de Game Over encontrado e ativado!");
             gameOverPanel.SetActive(true);
+            AudioController.Instance?.RegisterAllButtonsInScene();
             Time.timeScale = 0f; // Pausa o jogo
         }
         else
@@ -338,6 +340,7 @@ public class UIManager : MonoBehaviour
             }
 
             victoryPanel.SetActive(true);
+            AudioController.Instance?.RegisterAllButtonsInScene();
             Time.timeScale = 0f; // Pausa o jogo
         }
         else
@@ -466,7 +469,11 @@ public class UIManager : MonoBehaviour
 
         isPaused = true;
         Time.timeScale = 0f;
-        if (pausePanel != null) pausePanel.SetActive(true);
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(true);
+            AudioController.Instance?.RegisterAllButtonsInScene();
+        }
         if (pauseButton != null) pauseButton.gameObject.SetActive(false);
     }
 

@@ -53,7 +53,12 @@ public class GameManager : MonoBehaviour
         OnLifeChanged?.Invoke(Lives);
         if (Lives <= 0)
         {
+            AudioController.Instance?.PlayGameOver();
             OnGameOver?.Invoke();
+        }
+        else
+        {
+            AudioController.Instance?.PlayLoseLife();
         }
     }
 
@@ -76,6 +81,7 @@ public class GameManager : MonoBehaviour
 
     public void WinMatch()
     {
+        AudioController.Instance?.PlayVictory();
         OnVictory?.Invoke();
     }
 
